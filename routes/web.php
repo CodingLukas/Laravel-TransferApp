@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@show')->name('home');
+Route::put('/transfer', 'TransfersController@transfer');
+
+Route::get('/transfer', 'TransfersController@index');

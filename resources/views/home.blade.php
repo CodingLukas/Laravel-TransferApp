@@ -11,20 +11,22 @@
                     <div class="container">
 
                         <div class="container">
-                        History of Sent:<br>
+                            <div class="font-weight-bold">History of Sent:<br></div>
                         @foreach($sentList ?? '' as $sent)
                                 <div class="container">
                                     To Account: {{$sent->receiver_id}}<br>
                                     Amount: {{$sent->amount}}<br>
+                                    --------------
                                 </div>
                         @endforeach
                         </div>
                         <div class="container">
-                        History of Received:<br>
+                            <div class="font-weight-bold">History of Received:<br></div>
                         @foreach($receivedList ?? '' as $received)
                                 <div class="container">
                                     From Account: {{$received->sender_id}}<br>
                                     Amount: {{$received->amount}}<br>
+                                    --------------
                                 </div>
                         @endforeach
                         </div>
