@@ -21,8 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function show(\App\User $user)
     {
-        return view('home');
+        return view('home')->with(compact('user'));
     }
 }
