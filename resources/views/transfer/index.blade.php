@@ -9,7 +9,7 @@
                         <div class="container">
 
                             <h1>Transfer Money</h1>
-                            {!! Form::open(['action' => ['TransfersController@transfer'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+                            {!! Form::open(['action' => ['TransfersController@transfer'], 'method' => 'POST']) !!}
                             <div class="form-group">
                                 {{Form::label('account', 'Account')}}
                                 {{Form::text('account')}}
