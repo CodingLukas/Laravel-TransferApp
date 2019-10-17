@@ -33,22 +33,24 @@ class TransfersController extends Controller
         ]);
 
         $receiver_account = $request->input('account');
-        $sender_account = auth()->user()->account;
+        $sender_account = auth()->user()->account_number;
         $amount = $request->input('amount');
 
-        $sender_balance = $request->user()->amount;
+        $sender_balance = $request->user()->balance;
+
 
         if($sender_balance-$amount > 0 ){
-            if(DB::table('transfers')->where('receiver_account', $receiver_account)->exists()){
+            if(DB::table('users')->where('account_number', $receiver_account)->exists()){
 
-                $receiver_balance= User::find($receiver_account)->balance;
+                $user_id = User::where('account_number', $receiver_account)->value('id');
+                $receiver_balance= User::find($user_id)->balance;
 
                 DB::table('users')
-                    ->where('id', $receiver_account)
+                    ->where('account_number', $receiver_account)
                     ->update(['balance' => $receiver_balance+$amount]);
 
                 DB::table('users')
-                    ->where('id', $sender_account)
+                    ->where('account_number', $sender_account)
                     ->update(['balance' => $sender_balance-$amount]);
 
                 DB::table('transfers')->insert(

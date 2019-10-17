@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Balance: {{Auth::user()->amount}} EUR</div>
+                <div class="card-header">Balance: {{Auth::user()->balance}} EUR</div>
 
                 <div class="card-body">
                     <div class="container">
@@ -24,7 +24,7 @@
                             <div class="font-weight-bold">History of Received:<br></div>
                         @foreach($receivedList ?? '' as $received)
                                 <div class="container">
-                                    From Account: {{$received->sender_account}}<br>
+                                    From Account: {{$received->sender_account == 000000000 ? 'Transfer By System' : $received->sender_account}}<br>
                                     Amount: {{$received->amount}}<br>
                                     --------------
                                 </div>

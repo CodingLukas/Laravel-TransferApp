@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Transfer;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Classess\NumberGenerator;
+use App\Classes\NumberGenerator;
 
 class RegisterController extends Controller
 {
@@ -65,12 +66,19 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $numberGenerator = new NumberGenerator();
+        $accountNumber = $numberGenerator->generateAccountNumber();
+
+        Transfer::create([
+            'sender_account' => 000000000,
+            'receiver_account' => $accountNumber,
+            'amount' => 1000,
+        ]);
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'account_number' => $numberGenerator->generateAccountNumber(),
+            'account_number' => $accountNumber,
         ]);
     }
 }

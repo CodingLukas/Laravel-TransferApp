@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test1@gmail.com',
             'password' => bcrypt('password'),
             'account_number' => '111222333',
+            'balance' => '800,'
         ]);
 
         DB::table('users')->insert([
@@ -43,6 +44,10 @@ class DatabaseSeeder extends Seeder
 
         DB::table('transfers')->insert(
             ['receiver_account' => 444555666, 'sender_account' => 111222333, 'amount' => 200]
+        );
+
+        DB::table('transfers')->insert( // transfer from system
+            ['receiver_account' => 111222333, 'sender_account' => 000000000, 'amount' => 1000]
         );
     }
 }
