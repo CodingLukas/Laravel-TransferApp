@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Transfer;
 
 class CreateUsersTable extends Migration
 {
@@ -20,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->double('amount')->default(1000);
+            $table->bigInteger('account_number')->unique()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17149,7 +17149,7 @@ return jQuery;
   /** Used to match unescaped characters in compiled string literals. */
   var reUnescapedString = /['\n\r\u2028\u2029\\]/g;
 
-  /** Used to compose unicode character classes. */
+  /** Used to compose unicode character Classes. */
   var rsAstralRange = '\\ud800-\\udfff',
       rsComboMarksRange = '\\u0300-\\u036f',
       reComboHalfMarksRange = '\\ufe20-\\ufe2f',
@@ -42477,7 +42477,7 @@ function initExtend (Vue) {
     Sub.mixin = Super.mixin;
     Sub.use = Super.use;
 
-    // create asset registers, so extended classes
+    // create asset registers, so extended Classes
     // can have their private assets too.
     ASSET_TYPES.forEach(function (type) {
       Sub[type] = Super[type];
@@ -44111,7 +44111,7 @@ function updateClass (oldVnode, vnode) {
 
   var cls = genClassForVnode(vnode);
 
-  // handle transition classes
+  // handle transition Classes
   var transitionClass = el._transitionClasses;
   if (isDef(transitionClass)) {
     cls = concat(cls, stringifyClass(transitionClass));
@@ -46277,7 +46277,7 @@ var TransitionGroup = {
       // Detect whether an element with the move class applied has
       // CSS transitions. Since the element may be inside an entering
       // transition at this very moment, we make a clone of it and remove
-      // all other transition classes applied to ensure only the move class
+      // all other transition Classes applied to ensure only the move class
       // is applied.
       var clone = el.cloneNode();
       if (el._transitionClasses) {

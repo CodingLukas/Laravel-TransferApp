@@ -1,5 +1,6 @@
 <?php
 
+use App\Classes\NumberGenerator;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -13,21 +14,27 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //$this->call(UsersTableSeeder::class);
+
+        $numberGenerator = new NumberGenerator();
+
         DB::table('users')->insert([
             'name' => 'Test',
             'email' => 'test1@gmail.com',
             'password' => bcrypt('password'),
+            'account_number' => $numberGenerator->generateAccountNumber(),
         ]);
 
         DB::table('users')->insert([
             'name' => 'Test2',
             'email' => 'test2@gmail.com',
             'password' => bcrypt('password'),
+            'account_number' => $numberGenerator->generateAccountNumber(),
         ]);
         DB::table('users')->insert([
             'name' => Str::random(10),
             'email' => Str::random(10).'@gmail.com',
             'password' => bcrypt('password'),
+            'account_number' => $numberGenerator ->generateAccountNumber(),
         ]);
 
         DB::table('transfers')->insert(
