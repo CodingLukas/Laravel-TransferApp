@@ -21,14 +21,14 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test',
             'email' => 'test1@gmail.com',
             'password' => bcrypt('password'),
-            'account_number' => $numberGenerator->generateAccountNumber(),
+            'account_number' => '111222333',
         ]);
 
         DB::table('users')->insert([
             'name' => 'Test2',
             'email' => 'test2@gmail.com',
             'password' => bcrypt('password'),
-            'account_number' => $numberGenerator->generateAccountNumber(),
+            'account_number' => '444555666',
         ]);
         DB::table('users')->insert([
             'name' => Str::random(10),
@@ -38,11 +38,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('transfers')->insert(
-            ['receiver_id' => 1, 'sender_id' => 2, 'amount' => 100]
+            ['receiver_account' => 111222333, 'sender_account' => 444555666, 'amount' => 100]
         );
 
         DB::table('transfers')->insert(
-            ['receiver_id' => 2, 'sender_id' => 1, 'amount' => 200]
+            ['receiver_account' => 444555666, 'sender_account' => 111222333, 'amount' => 200]
         );
     }
 }

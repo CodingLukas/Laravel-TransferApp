@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Transfer;
 
@@ -24,8 +25,9 @@ class HomeController extends Controller
      */
     public function show()
     {
-        $sentList = Transfer::where('sender_number', auth()->id())->get();
-        $receivedList = Transfer::where('receiver_number', auth()->id())->get();
+        $accountNumber = auth()->user()->account_number;
+        $sentList = Transfer::where('sender_account', $accountNumber)->get();
+        $receivedList = Transfer::where('receiver_account', $accountNumber)->get();
         return view('home')->with(compact('sentList','receivedList'));
     }
 
