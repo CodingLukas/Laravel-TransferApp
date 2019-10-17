@@ -24,8 +24,8 @@ class HomeController extends Controller
      */
     public function show()
     {
-        $sentList = Transfer::where('sender_id', auth()->id())->get();
-        $receivedList = Transfer::where('receiver_id', auth()->id())->get();
+        $sentList = Transfer::where('sender_number', auth()->id())->get();
+        $receivedList = Transfer::where('receiver_number', auth()->id())->get();
         return view('home')->with(compact('sentList','receivedList'));
     }
 

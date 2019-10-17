@@ -15,8 +15,8 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('sender_id');
-            $table->bigInteger('receiver_id');
+            $table->bigInteger('sender_account');
+            $table->bigInteger('receiver_account');
             $table->double('amount');
             $table->timestamps();
         });
